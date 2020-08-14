@@ -1,0 +1,79 @@
+{
+  "network-configs": {
+    "network-1": {
+      "version": "1.0.0",
+      "clients": {
+        "client-1": {
+          "tlsEnable": true,
+          "organization": "IgxMSP",
+          "credentialStore": {
+            "path": "./tmp/credentialStore_IgxMSP/credential",
+            "cryptoStore": {
+              "path": "./tmp/credentialStore_1/crypto"
+            }
+          },
+          "request-timeout": 90000
+        }
+      },
+      "channels": {
+        "test": {
+          "peers": {
+            "peer0.igx.example.com": {}
+          },
+          "orderers": {
+            "orderer.igx.com": {}
+          },
+          "connection": {
+            "timeout": {
+              "peer": {
+                "endorser": "90000",
+                "eventHub": "6000",
+                "eventReg": "6000",
+                "request-timeout": "90000"
+              },
+              "orderer": "90000"
+            }
+          }
+        }  
+        },
+        "organizations": {
+          "IgxMSP": {
+            "mspid": "IgxMSP",
+            "fullpath": false,
+            "signedCert": {
+              "path": "./hyperledger/Admin@igx.example.com-cert.pem"
+            },
+            "adminPrivateKey": {
+              "path": "./hyperledger/db9cd48a205956c01902865baa28a52f36845344144121db048eb727ed71df79_sk"
+            }
+          }
+        },
+        "peers": {
+          "peer0.igx.example.com": {
+            "tlsCACerts": {
+              "path": "./hyperledger/ca.crt"
+            },
+            "url": "grpcs://peer0.igx.example.com:7051",
+            "eventUrl": "grpcs://peer0.igx.example.com:7053",
+            "grpcsOptions": {
+              "ssl-target-name-override": "peer0.igx.example.com"
+            },
+            "request-timeout": 90000
+          }
+        },
+        "orderers": {
+          "orderer": {
+            "url": "grpcs://orderer.igx.com:7050",
+            "grpcsOptions": {
+              "ssl-target-name-override": "orderer.igx.com"
+            },
+            "eventUrl": "grpcs://orderer.igx.com:7050",
+            "tlsCACerts": {
+              "path": "./hyperledger/tlsca.igx.com-cert.pem"
+            }
+          }
+        }
+      }
+    },
+    "license": "Apache-2.0"
+  }
